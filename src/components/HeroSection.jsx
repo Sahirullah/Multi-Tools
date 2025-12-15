@@ -51,7 +51,7 @@ const HeroSection = () => {
           <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 transition-all duration-1000 delay-600 ${isHeroVisible ? 'animate-scale-in' : 'opacity-0 scale-75'}`}>
             <a 
               href="#tools"
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 no-underline"
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold shadow-xl no-underline btn-hover"
             >
               <span className="flex items-center justify-center">
                 🚀 {t('chooseToolBtn')}
@@ -62,7 +62,7 @@ const HeroSection = () => {
             </a>
             <label 
               htmlFor="hero-file-input"
-              className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white/80 backdrop-blur-sm hover:bg-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+              className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white/80 backdrop-blur-sm hover:bg-white px-10 py-4 rounded-2xl text-lg font-semibold shadow-lg cursor-pointer btn-hover"
             >
               <input 
                 type="file" 

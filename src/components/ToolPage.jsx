@@ -360,7 +360,7 @@ Multi.Tools - File Conversion Made Easy`;
               />
               <label
                 htmlFor="file-input"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-semibold cursor-pointer inline-block transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-semibold cursor-pointer inline-block shadow-lg btn-hover"
               >
 {t('chooseFiles')}
               </label>
@@ -414,7 +414,7 @@ Multi.Tools - File Conversion Made Easy`;
             {!isConverting && !convertedFile && (
               <button
                 onClick={simulateConversion}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold shadow-lg btn-hover flex items-center justify-center space-x-2"
               >
                 <span>🚀</span>
                 <span>Start Conversion</span>
@@ -475,7 +475,7 @@ Multi.Tools - File Conversion Made Easy`;
             {!isConverting && !convertedFile && (
               <button
                 onClick={simulateConversion}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold shadow-lg btn-hover flex items-center justify-center space-x-2"
               >
                 <span>🚀</span>
                 <span>Convert All Files</span>
@@ -511,14 +511,14 @@ Multi.Tools - File Conversion Made Easy`;
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
                   onClick={handleDownload}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-bold shadow-lg btn-hover flex items-center justify-center space-x-2"
                 >
                   <span>📥</span>
                   <span>{t('downloadFile')}</span>
                 </button>
                 <button
                   onClick={resetTool}
-                  className="border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white hover:bg-blue-50 px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
+                  className="border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white hover:bg-blue-50 px-8 py-4 rounded-2xl font-bold shadow-lg btn-hover flex items-center justify-center space-x-2"
                 >
                   <span>🔄</span>
                   <span>{t('convertAnother')}</span>

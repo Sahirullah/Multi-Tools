@@ -93,7 +93,7 @@ const ToolsGrid = () => {
                 transitionDelay: isGridVisible ? `${index * 150}ms` : '0ms'
               }}
             >
-              <div className="text-5xl mb-6 text-center">
+              <div className="text-5xl mb-6 text-center icon-hover">
                 {tool.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3 text-center group-hover:text-blue-600 transition-colors duration-200">
@@ -104,7 +104,7 @@ const ToolsGrid = () => {
               </p>
               <Link
                 to={tool.path}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-semibold block text-center shadow-lg transition-all duration-200"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-semibold block text-center shadow-lg btn-hover"
               >
                 {t('startNow')} →
               </Link>

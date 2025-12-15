@@ -43,7 +43,7 @@ const Header = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center space-x-2 group">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-lg btn-hover">
                   M
                 </div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -56,16 +56,16 @@ const Header = () => {
           {/* Navigation Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-1">
-              <Link to="/" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200">
+              <Link to="/" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium link-hover">
                 {t('home')}
               </Link>
-              <a href="#tools" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200">
+              <a href="#tools" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium link-hover">
                 {t('tools')}
               </a>
-              <Link to="/about" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200">
+              <Link to="/about" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium link-hover">
                 {t('about')}
               </Link>
-              <Link to="/contact" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200">
+              <Link to="/contact" className="text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-xl text-sm font-medium link-hover">
                 {t('contact')}
               </Link>
             </div>
@@ -75,7 +75,7 @@ const Header = () => {
           <div className="relative" ref={languageDropdownRef}>
             <button
               onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-              className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200"
+              className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-xl text-sm font-medium btn-hover"
             >
               <span className="text-lg">{currentLang?.flag}</span>
               <span className="hidden sm:block">{currentLang?.name}</span>
@@ -96,7 +96,7 @@ const Header = () => {
                   <button
                     key={language.code}
                     onClick={() => handleLanguageChange(language.code)}
-                    className={`w-full flex items-center space-x-3 px-4 py-3 text-sm transition-all duration-200 ${
+                    className={`w-full flex items-center space-x-3 px-4 py-3 text-sm link-hover ${
                       currentLanguage === language.code
                         ? 'bg-blue-50 text-blue-600 font-medium'
                         : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600'

@@ -152,20 +152,62 @@
   animation: bounce-in 0.8s ease-out;
 }
 
-/* Smooth zoom hover effect */
+/* Ultra-smooth hover effects for all interactive elements */
+
+/* Global smooth transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover effects */
 .card-hover {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1);
-  will-change: transform;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1) translateZ(0);
+  will-change: transform, box-shadow, border-color;
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
 
 .card-hover:hover {
-  transform: scale(1.03);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(1.02) translateZ(0);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 
+              0 0 0 1px rgba(59, 130, 246, 0.1),
+              0 0 20px rgba(59, 130, 246, 0.05);
+}
+
+/* Button hover effects */
+.btn-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Link hover effects */
+.link-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(0);
+  will-change: transform, color;
+}
+
+.link-hover:hover {
+  transform: translateY(-1px);
+}
+
+/* Icon hover effects */
+.icon-hover {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1) rotate(0deg);
+  will-change: transform;
+}
+
+.icon-hover:hover {
+  transform: scale(1.1) rotate(5deg);
 }
 
 /* Scroll-triggered animations */
