@@ -1,64 +1,66 @@
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ToolsGrid = () => {
   const [titleRef, isTitleVisible] = useScrollAnimation({ threshold: 0.2 });
   const [gridRef, isGridVisible] = useScrollAnimation({ threshold: 0.1 });
+  const { t } = useLanguage();
   const tools = [
     {
       id: 'pdf-to-word',
       icon: '📄➡️📝',
       title: 'PDF to Word',
-      description: 'Convert PDF documents to editable Word files',
+      description: t('pdfToWord'),
       path: '/pdf-to-word'
     },
     {
       id: 'word-to-pdf',
       icon: '📝➡️📄',
       title: 'Word to PDF',
-      description: 'Convert Word documents to PDF format',
+      description: t('wordToPdf'),
       path: '/word-to-pdf'
     },
     {
       id: 'pdf-to-image',
       icon: '📄➡️🖼️',
       title: 'PDF to Image',
-      description: 'Extract images from PDF or convert pages to images',
+      description: t('pdfToImage'),
       path: '/pdf-to-image'
     },
     {
       id: 'image-to-pdf',
       icon: '🖼️➡️📄',
       title: 'Image to PDF',
-      description: 'Combine multiple images into a single PDF',
+      description: t('imageToPdf'),
       path: '/image-to-pdf'
     },
     {
       id: 'pdf-to-ppt',
       icon: '📄➡️📊',
       title: 'PDF to PPT',
-      description: 'Convert PDF documents to PowerPoint presentations',
+      description: t('pdfToPpt'),
       path: '/pdf-to-ppt'
     },
     {
       id: 'ppt-to-pdf',
       icon: '📊➡️📄',
       title: 'PPT to PDF',
-      description: 'Convert PowerPoint presentations to PDF',
+      description: t('pptToPdf'),
       path: '/ppt-to-pdf'
     },
     {
       id: 'pdf-compress',
       icon: '📄🗜️',
       title: 'PDF Compress',
-      description: 'Reduce PDF file size without losing quality',
+      description: t('pdfCompress'),
       path: '/pdf-compress'
     },
     {
       id: 'image-compress',
       icon: '🖼️🗜️',
       title: 'Image Compress',
-      description: 'Compress images to reduce file size',
+      description: t('imageCompress'),
       path: '/image-compress'
     }
   ];
@@ -69,11 +71,11 @@ const ToolsGrid = () => {
         <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${isTitleVisible ? 'animate-slide-in-up' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent animate-gradient">
-              Powerful Conversion Tools
+              {t('toolsTitle')}
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Choose from our collection of lightning-fast, professional-grade file conversion tools
+            {t('toolsDescription')}
           </p>
         </div>
         
