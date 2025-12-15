@@ -105,6 +105,18 @@
   }
 }
 
+@keyframes hover-zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
@@ -139,6 +151,14 @@
 
 .animate-bounce-in {
   animation: bounce-in 0.8s ease-out;
+}
+
+.hover-zoom {
+  transition: all 0.2s ease;
+}
+
+.hover-zoom:hover {
+  animation: hover-zoom 0.6s ease-in-out;
 }
 
 /* Scroll-triggered animations */

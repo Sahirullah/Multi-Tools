@@ -49,22 +49,40 @@ const HeroSection = () => {
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 transition-all duration-1000 delay-600 ${isHeroVisible ? 'animate-scale-in' : 'opacity-0 scale-75'}`}>
-            <button className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105">
+            <a 
+              href="#tools"
+              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 no-underline"
+            >
               <span className="flex items-center justify-center">
                 🚀 {t('chooseToolBtn')}
                 <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
-            </button>
-            <button className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white/80 backdrop-blur-sm hover:bg-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+            </a>
+            <label 
+              htmlFor="hero-file-input"
+              className="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white/80 backdrop-blur-sm hover:bg-white px-10 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl cursor-pointer"
+            >
+              <input 
+                type="file" 
+                id="hero-file-input" 
+                className="hidden" 
+                multiple 
+                onChange={(e) => {
+                  if (e.target.files.length > 0) {
+                    // Scroll to tools section after file selection
+                    document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              />
               <span className="flex items-center justify-center">
                 📁 {t('uploadFileBtn')}
                 <svg className="ml-2 w-5 h-5 group-hover:translate-y-[-2px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
               </span>
-            </button>
+            </label>
           </div>
           
           {/* Stats */}

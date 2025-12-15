@@ -83,7 +83,7 @@ const ToolsGrid = () => {
           {tools.map((tool, index) => (
             <div
               key={tool.id}
-              className={`group bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-200 transform hover:scale-105 hover:-translate-y-2 ${
+              className={`group bg-white rounded-2xl p-8 hover:shadow-2xl border border-gray-100 hover:border-blue-200 hover-zoom ${
                 isGridVisible 
                   ? 'animate-scale-in opacity-100' 
                   : 'opacity-0 scale-75'
