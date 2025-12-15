@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 const ToolPage = ({ 
   toolName, 
@@ -9,6 +10,7 @@ const ToolPage = ({
   outputFormat,
   description 
 }) => {
+  const { t } = useLanguage();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -69,6 +71,180 @@ const ToolPage = ({
     }
   };
 
+  const createMockFile = (originalFile, outputFormat) => {
+    const convertedFileName = originalFile.name.replace(/\.[^/.]+$/, outputFormat);
+    
+    // Create appropriate mock content based on output format
+    let blob;
+    let mimeType;
+    
+    switch (outputFormat) {
+      case '.pdf':
+        // Create a minimal valid PDF structure
+        const pdfContent = `%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+/Resources <<
+/Font <<
+/F1 5 0 R
+>>
+>>
+>>
+endobj
+
+4 0 obj
+<<
+/Length 44
+>>
+stream
+BT
+/F1 12 Tf
+100 700 Td
+(Mock Converted File) Tj
+ET
+endstream
+endobj
+
+5 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+endobj
+
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000274 00000 n 
+0000000369 00000 n 
+trailer
+<<
+/Size 6
+/Root 1 0 R
+>>
+startxref
+456
+%%EOF`;
+        blob = new Blob([pdfContent], { type: 'application/pdf' });
+        mimeType = 'application/pdf';
+        break;
+        
+      case '.docx':
+        // Create a simple text file for Word documents (in real app, would be proper DOCX)
+        const docContent = `Mock Converted Document
+
+Original File: ${originalFile.name}
+Converted to: ${convertedFileName}
+Conversion Date: ${new Date().toLocaleString()}
+
+This is a mock converted document. In a real application, this would be a properly formatted Word document with the converted content from your original file.
+
+Multi.Tools - File Conversion Made Easy`;
+        blob = new Blob([docContent], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+        mimeType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        break;
+        
+      case '.jpg':
+      case '.jpeg':
+        // Create a minimal valid JPEG header (1x1 pixel image)
+        const jpegData = new Uint8Array([
+          0xFF, 0xD8, 0xFF, 0xE0, 0x00, 0x10, 0x4A, 0x46, 0x49, 0x46, 0x00, 0x01,
+          0x01, 0x01, 0x00, 0x48, 0x00, 0x48, 0x00, 0x00, 0xFF, 0xDB, 0x00, 0x43,
+          0x00, 0x08, 0x06, 0x06, 0x07, 0x06, 0x05, 0x08, 0x07, 0x07, 0x07, 0x09,
+          0x09, 0x08, 0x0A, 0x0C, 0x14, 0x0D, 0x0C, 0x0B, 0x0B, 0x0C, 0x19, 0x12,
+          0x13, 0x0F, 0x14, 0x1D, 0x1A, 0x1F, 0x1E, 0x1D, 0x1A, 0x1C, 0x1C, 0x20,
+          0x24, 0x2E, 0x27, 0x20, 0x22, 0x2C, 0x23, 0x1C, 0x1C, 0x28, 0x37, 0x29,
+          0x2C, 0x30, 0x31, 0x34, 0x34, 0x34, 0x1F, 0x27, 0x39, 0x3D, 0x38, 0x32,
+          0x3C, 0x2E, 0x33, 0x34, 0x32, 0xFF, 0xC0, 0x00, 0x11, 0x08, 0x00, 0x01,
+          0x00, 0x01, 0x01, 0x01, 0x11, 0x00, 0x02, 0x11, 0x01, 0x03, 0x11, 0x01,
+          0xFF, 0xC4, 0x00, 0x14, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0xFF, 0xC4,
+          0x00, 0x14, 0x10, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+          0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xDA, 0x00, 0x0C,
+          0x03, 0x01, 0x00, 0x02, 0x11, 0x03, 0x11, 0x00, 0x3F, 0x00, 0x8A, 0x00,
+          0xFF, 0xD9
+        ]);
+        blob = new Blob([jpegData], { type: 'image/jpeg' });
+        mimeType = 'image/jpeg';
+        break;
+        
+      case '.png':
+        // Create a minimal valid PNG (1x1 pixel transparent image)
+        const pngData = new Uint8Array([
+          0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0x00, 0x00, 0x00, 0x0D,
+          0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
+          0x08, 0x06, 0x00, 0x00, 0x00, 0x1F, 0x15, 0xC4, 0x89, 0x00, 0x00, 0x00,
+          0x0B, 0x49, 0x44, 0x41, 0x54, 0x78, 0x9C, 0x63, 0x00, 0x01, 0x00, 0x00,
+          0x05, 0x00, 0x01, 0x0D, 0x0A, 0x2D, 0xB4, 0x00, 0x00, 0x00, 0x00, 0x49,
+          0x45, 0x4E, 0x44, 0xAE, 0x42, 0x60, 0x82
+        ]);
+        blob = new Blob([pngData], { type: 'image/png' });
+        mimeType = 'image/png';
+        break;
+        
+      case '.pptx':
+        // Create a simple text file for PowerPoint (in real app, would be proper PPTX)
+        const pptContent = `Mock Converted Presentation
+
+Original File: ${originalFile.name}
+Converted to: ${convertedFileName}
+Conversion Date: ${new Date().toLocaleString()}
+
+Slide 1: Title Slide
+- Mock Converted Presentation
+- Created by Multi.Tools
+
+Slide 2: Content
+- This is a mock converted presentation
+- In a real application, this would be a properly formatted PowerPoint file
+- With all the original content converted appropriately
+
+Multi.Tools - File Conversion Made Easy`;
+        blob = new Blob([pptContent], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
+        mimeType = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+        break;
+        
+      default:
+        // Fallback to text file
+        const textContent = `Mock Converted File
+
+Original File: ${originalFile.name}
+Converted to: ${convertedFileName}
+Conversion Date: ${new Date().toLocaleString()}
+
+This is a mock converted file created by Multi.Tools. In a real application, this would contain the actual converted content from your original file.
+
+Multi.Tools - File Conversion Made Easy`;
+        blob = new Blob([textContent], { type: 'text/plain' });
+        mimeType = 'text/plain';
+    }
+    
+    return { blob, mimeType, convertedFileName };
+  };
+
   const simulateConversion = async () => {
     setIsConverting(true);
     setUploadProgress(0);
@@ -82,17 +258,45 @@ const ToolPage = ({
     // Simulate conversion time
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    // Mock converted file
+    // Create a mock converted file with proper format
+    const originalFile = selectedFiles.length > 0 ? selectedFiles[0] : selectedFile;
+    const { blob, mimeType, convertedFileName } = createMockFile(originalFile, outputFormat);
+    const url = URL.createObjectURL(blob);
+    
     setConvertedFile({
-      name: selectedFile.name.replace(/\.[^/.]+$/, outputFormat),
-      size: Math.floor(selectedFile.size * 0.8), // Simulate compression
-      url: '#' // In real app, this would be the download URL
+      name: convertedFileName,
+      size: Math.floor(originalFile.size * 0.8), // Simulate compression
+      url: url,
+      blob: blob,
+      mimeType: mimeType
     });
     
     setIsConverting(false);
   };
 
+  const handleDownload = () => {
+    if (convertedFile && convertedFile.url) {
+      // Create a temporary download link
+      const link = document.createElement('a');
+      link.href = convertedFile.url;
+      link.download = convertedFile.name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Clean up the blob URL after download
+      setTimeout(() => {
+        URL.revokeObjectURL(convertedFile.url);
+      }, 1000);
+    }
+  };
+
   const resetTool = () => {
+    // Clean up any existing blob URLs
+    if (convertedFile && convertedFile.url) {
+      URL.revokeObjectURL(convertedFile.url);
+    }
+    
     setSelectedFile(null);
     setSelectedFiles([]);
     setConvertedFile(null);
@@ -141,10 +345,10 @@ const ToolPage = ({
                 <span className="text-3xl text-white">📁</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                Drop your files here
+                {t('dropFiles')}
               </h3>
               <p className="text-gray-600 mb-8 text-lg">
-                or click to browse • Supports single or multiple files
+                {t('clickToBrowse')}
               </p>
               <input
                 type="file"
@@ -158,10 +362,10 @@ const ToolPage = ({
                 htmlFor="file-input"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-semibold cursor-pointer inline-block transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Choose Files
+{t('chooseFiles')}
               </label>
               <p className="text-sm text-gray-500 mt-6 bg-gray-50 px-4 py-2 rounded-xl inline-block">
-                Accepted formats: {acceptedTypes.join(', ')}
+                {t('acceptedFormats')}: {acceptedTypes.join(', ')}
               </p>
             </div>
           </div>
@@ -305,16 +509,19 @@ const ToolPage = ({
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2">
+                <button 
+                  onClick={handleDownload}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
+                >
                   <span>📥</span>
-                  <span>Download File</span>
+                  <span>{t('downloadFile')}</span>
                 </button>
                 <button
                   onClick={resetTool}
                   className="border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white hover:bg-blue-50 px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
                   <span>🔄</span>
-                  <span>Convert Another File</span>
+                  <span>{t('convertAnother')}</span>
                 </button>
               </div>
             </div>
