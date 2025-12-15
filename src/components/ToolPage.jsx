@@ -156,11 +156,11 @@ const ToolPage = ({
               />
               <label
                 htmlFor="file-input"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium cursor-pointer inline-block transition-colors"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-semibold cursor-pointer inline-block transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Choose Files
               </label>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+              <p className="text-sm text-gray-500 mt-6 bg-gray-50 px-4 py-2 rounded-xl inline-block">
                 Accepted formats: {acceptedTypes.join(', ')}
               </p>
             </div>
@@ -210,9 +210,10 @@ const ToolPage = ({
             {!isConverting && !convertedFile && (
               <button
                 onClick={simulateConversion}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
               >
-                Start Conversion
+                <span>🚀</span>
+                <span>Start Conversion</span>
               </button>
             )}
           </div>
@@ -270,9 +271,10 @@ const ToolPage = ({
             {!isConverting && !convertedFile && (
               <button
                 onClick={simulateConversion}
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 px-6 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
               >
-                Convert All Files
+                <span>🚀</span>
+                <span>Convert All Files</span>
               </button>
             )}
           </div>
@@ -303,14 +305,16 @@ const ToolPage = ({
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
-                  Download File
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2">
+                  <span>📥</span>
+                  <span>Download File</span>
                 </button>
                 <button
                   onClick={resetTool}
-                  className="border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                  className="border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 bg-white hover:bg-blue-50 px-8 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2"
                 >
-                  Convert Another File
+                  <span>🔄</span>
+                  <span>Convert Another File</span>
                 </button>
               </div>
             </div>
