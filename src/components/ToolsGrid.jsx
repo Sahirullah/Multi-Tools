@@ -83,7 +83,7 @@ const ToolsGrid = () => {
           {tools.map((tool, index) => (
             <div
               key={tool.id}
-              className={`group bg-white rounded-2xl p-8 border border-gray-100 hover:border-blue-200 card-hover ${
+              className={`group bg-white rounded-2xl p-8 border border-gray-100 hover:border-blue-200 card-hover shadow-sm ${
                 isGridVisible 
                   ? 'animate-scale-in opacity-100' 
                   : 'opacity-0 scale-75'
@@ -93,18 +93,18 @@ const ToolsGrid = () => {
                 transitionDelay: isGridVisible ? `${index * 150}ms` : '0ms'
               }}
             >
-              <div className="text-5xl mb-6 text-center card-icon">
+              <div className="text-5xl mb-6 text-center">
                 {tool.icon}
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center group-hover:text-blue-600 transition-colors duration-300">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 text-center group-hover:text-blue-600 transition-colors duration-200">
                 {tool.title}
               </h3>
-              <p className="text-gray-600 text-sm mb-6 text-center leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+              <p className="text-gray-600 text-sm mb-6 text-center leading-relaxed">
                 {tool.description}
               </p>
               <Link
                 to={tool.path}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-semibold block text-center shadow-lg card-button"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-semibold block text-center shadow-lg transition-all duration-200"
               >
                 {t('startNow')} →
               </Link>
