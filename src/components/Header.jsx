@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollProgress } from '../hooks/useScrollAnimation';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 const Header = () => {
   const scrollProgress = useScrollProgress();

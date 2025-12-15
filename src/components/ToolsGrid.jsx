@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 const ToolsGrid = () => {
   const [titleRef, isTitleVisible] = useScrollAnimation({ threshold: 0.2 });
@@ -106,7 +106,7 @@ const ToolsGrid = () => {
                 to={tool.path}
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-4 rounded-xl font-semibold transition-all duration-300 block text-center shadow-lg hover:shadow-xl transform hover:scale-105"
               >
-                Start Now →
+                {t('startNow')} →
               </Link>
             </div>
           ))}

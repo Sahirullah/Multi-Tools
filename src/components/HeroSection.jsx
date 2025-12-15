@@ -1,5 +1,5 @@
 import { useScrollAnimation, useParallax } from '../hooks/useScrollAnimation';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 const HeroSection = () => {
   const [heroRef, isHeroVisible] = useScrollAnimation({ threshold: 0.2 });
