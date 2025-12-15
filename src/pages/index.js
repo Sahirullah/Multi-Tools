@@ -1,0 +1,11 @@
+export { default as PdfToWordPage } from './PdfToWordPage';
+export { default as WordToPdfPage } from './WordToPdfPage';
+export { default as PdfToImagePage } from './PdfToImagePage';
+export { default as ImageToPdfPage } from './ImageToPdfPage';
+export { default as PdfToPptPage } from './PdfToPptPage';
+export { default as PptToPdfPage } from './PptToPdfPage';
+export { default as PdfCompressPage } from './PdfCompressPage';
+export { default as ImageCompressPage } from './ImageCompressPage';
+export { default as LoginPage } from './LoginPage';
+export { default as AboutPage } from './AboutPage';
+export { default as ContactPage } from './ContactPage';
